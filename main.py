@@ -18,61 +18,67 @@ import xlsxwriter as xl
 def sin(f, time, amp):
    return amp*m.sin(2*m.pi*f*time)
 
-# Rate of how many data points are recorded per second
-sample_rate = 0.03333333333
+def generateGraph(filenumber):
 
-# Start time & end time for each data set
-start_time = 0
-end_time = 144000
+    # Rate of how many data points are recorded per second
+    sample_rate = 0.03333333333
 
-# Amplitude of Period
-amp = 1
+    # Start time & end time for each data set
+    start_time = 0
+    end_time = 144000
 
-# Period of curve in seconds
-T = 36000
+    # Amplitude of Period
+    amp = 1
 
-# Frequency of sine curve. Depends on period
-f = 1/T
+    # Period of curve in seconds
+    T = 36000
 
-# Generate the time data points
-time = np.arange(start_time, end_time, 1/sample_rate)
+    # Frequency of sine curve. Depends on period
+    f = 1/T
 
-# Generate the sine curve outputs
-sinewave = amp * np.sin(2 * np.pi * f * time) + 10
+    # Generate the time data points
+    time = np.arange(start_time, end_time, 1/sample_rate)
 
-# Convert Numpy arrays to python lists
-new_time = time.tolist()
-new_sinewave = sinewave.tolist()
+    # Generate the sine curve outputs
+    sinewave = amp * np.sin(2 * np.pi * f * time) + 10
 
-# Randomly remove data points
-for i in range(int(len(new_time)*.9975)):
-    random_index = np.random.randint(0, int(len(new_time)*.9975))
-    new_time.pop(random_index)
-    new_sinewave.pop(random_index)
+    # Convert Numpy arrays to python lists
+    new_time = time.tolist()
+    new_sinewave = sinewave.tolist()
 
-# Create output excel worksheet
-workbook = xl.Workbook('output.xlsx')
+    # Randomly remove data points
+    for i in range(int(len(new_time)*.9975)):
+        random_index = np.random.randint(0, int(len(new_time)*.9975))
+        new_time.pop(random_index)
+        new_sinewave.pop(random_index)
 
-# Add worksheet to workbook
-worksheet = workbook.add_worksheet()
+    # Create output excel worksheet
+    workbook = xl.Workbook('output' + str(filenumber) + '.xlsx')
 
-# Set starting row for data
-row = 1
+    # Add worksheet to workbook
+    worksheet = workbook.add_worksheet()
 
-# Create column titles
-worksheet.write_string(0, 0, 'Time (s)')
-worksheet.write_string(0, 1, 'Magnitude')
+    # Set starting row for data
+    row = 1
 
-# Add data to worksheet
-for i in range(len(new_time)):
-    worksheet.write(row, 0, new_time[i])
-    worksheet.write(row, 1, new_sinewave[i])
-    row += 1
+    # Create column titles
+    worksheet.write_string(0, 0, 'Time (s)')
+    worksheet.write_string(0, 1, 'Magnitude')
 
-# Close workbook
-workbook.close()
+    # Add data to worksheet
+    for i in range(len(new_time)):
+        worksheet.write(row, 0, new_time[i])
+        worksheet.write(row, 1, new_sinewave[i])
+        row += 1
 
-# Plot and show curve
-plt.scatter(new_time, new_sinewave)
-plt.show()
+    # Close workbook
+    workbook.close()
 
+    # Plot and show curve
+    #plt.scatter(new_time, new_sinewave)
+    #plt.show()
+
+
+generateGraph(1)
+generateGraph(2)
+generateGraph(3)
