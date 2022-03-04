@@ -6,6 +6,8 @@
             data points making the period unrecognizeable. This script is meant to be used to test a
             string length minimization script for accuracy.
 
+    Github: https://github.com/zacharyrkennedy/RandomSinePeriodGenerator
+
 """
 
 import math as m
@@ -160,9 +162,9 @@ def generateData(filenumber, period):
     #plt.show()
 
     # Show the true period graph. Commented out, mostly for testing purposes
-    #if filenumber == 3:
-        #plt.scatter(time, sinewave)
-        #plt.show()
+    if filenumber == 3:
+        plt.scatter(time, sinewave)
+        plt.show()
 
 # Generate a random period between one day and 4 days but in seconds
 rand_Period = r.randint(43200,345600)
