@@ -3,8 +3,20 @@ This code generates a sine curve with a random period, and then generates 3 data
 
 <br>
 
-<head1> <b> Full Sine Curve | Randomized Period </b> </head1>
 
-<br>
+<p align="center"> <b> Full Sine Curve | Randomized Period </b> 
+  <br>
+  <img src="FullCurve-ShowCase.png" alt="Full Curve Showcase" align="center">
+</p> 
 
-<img src="pic_trulli.jpg" alt="Full Curve Showcase">
+
+
+<p align="center"> <b> Sample Sine Curve | Limited Data</b> 
+  <br>
+  <img src="SineCurveShowCase.png" alt="Full Curve Showcase" align="center">
+</p> 
+
+<p align="center"> <b> Sample Excel SpreadSheet</b> 
+  <br>
+  <img src="ExcelShowCase.png" alt="Full Curve Showcase" align="center">
+</p> 
